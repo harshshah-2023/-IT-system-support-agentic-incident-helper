@@ -1,0 +1,30 @@
+﻿──────────────────────────────────────────────────────── VECTOR ────────────────────────────────────────────────────────
+The services that need a restart after the main database fails over are ledger-service, payments-api, orders-api, and 
+notification-service. The order in which they must be restarted is as follows: 
+1. ledger-service 
+2. payments-api (in rolling batches) 
+3. orders-api 
+4. notification-service 
+
+This sequence is critical to avoid issues with stale connections and dependencies between services [1][2][3][7].
+  p.21 5.5.4 Services that must restart similarity=0.8395
+  p.29 7.4.3 After a database event similarity=0.8154
+  p.30 8.1 Why order matters similarity=0.8108
+  p.30 8.3 Procedure similarity=0.7544
+  similarity=0.8395 confidence=0.8395 generation_called=True
+  {'latency_ms': 3513.2, 'input_tokens': 1142, 'output_tokens': 125, 'llm_calls': 1, 'retrieved': 8}
+────────────────────────────────────────────────────── VECTORLESS ──────────────────────────────────────────────────────
+If the main database fails over, the services that need a restart and their order are as follows:
+
+1. **pgbouncer-payments** - Reconnect the pooler to the new leader first.
+2. **ledger-service** - Must be healthy before payments-api starts.
+3. **payments-api** - Refuses to start without the ledger.
+4. **orders-api** - Resumes status lookups and drains retries.
+5. **notification-service** - Last, to avoid duplicate customer messages.
+
+For each stage, wait for the component to pass health checks for 2 minutes before starting the next one. A single 
+passing check is not enough; the component must stay healthy for the whole period.
+  p.30 8.2 Restart order similarity=None
+  Visited: Root -> 8. Post-failover recovery and service restart sequencing -> 8.2 Restart order
+  similarity=None confidence=1.0 generation_called=True
+  {'latency_ms': 7585.69, 'input_tokens': 2165, 'output_tokens': 477, 'llm_calls': 3, 'retrieved': 1}

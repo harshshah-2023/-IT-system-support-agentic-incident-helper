@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Incident Response Helper</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="shell">
+  <aside class="rail">
+    <div class="brand"><span class="mark" aria-hidden="true"></span><div><strong>Incident Helper</strong><small>Larkspur Commerce</small></div></div>
+    <nav aria-label="Main">
+      <a href="#/incidents" data-nav="incidents">Incidents</a>
+      <a href="#/retrieval" data-nav="retrieval">Runbook search</a>
+      <a href="#/evals" data-nav="evals">Evaluation</a>
+      <a href="#/gateway" data-nav="gateway">Gateway</a>
+      <a href="#/audit" data-nav="audit">Audit log</a>
+    </nav>
+    <div class="rail-foot" id="runtime"></div>
+  </aside>
+  <main id="view" tabindex="-1"></main>
+</div>
+<script type="module" src="app.js"></script>
+</body>
+</html>

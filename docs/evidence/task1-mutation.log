@@ -1,0 +1,40 @@
+﻿{
+  "prompt": "payments-api looks slow. Check its health.",
+  "baseline": {
+    "schema_description": "Get the live health of one production service.\n\nUse this first when so",
+    "tool_calls": [
+      {
+        "name": "check_service_status",
+        "args": {
+          "service": "payments-api"
+        }
+      }
+    ],
+    "text": ""
+  },
+  "renamed_to_xyz_123": {
+    "schema_description": "Get the live health of one production service.\n\nUse this first when so",
+    "tool_calls": [
+      {
+        "name": "xyz_123",
+        "args": {
+          "service": "payments-api"
+        }
+      }
+    ],
+    "text": ""
+  },
+  "docstring_blank": {
+    "schema_description": "",
+    "tool_calls": [
+      {
+        "name": "check_service_status",
+        "args": {
+          "service": "payments-api"
+        }
+      }
+    ],
+    "text": ""
+  },
+  "docstring_deleted_under_@tool": "Function must have a docstring if description not provided."
+}

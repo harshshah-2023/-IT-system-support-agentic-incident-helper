@@ -1,0 +1,27 @@
+[
+  {
+    "id": "MSG-1", "incident_id": "INC-1042", "channel": "alert", "from": "pagerduty@alerts.larkspur.example", "received_at": "2026-11-02T02:30:00Z",
+    "subject": "[CRITICAL] payments-api p95 latency above SLO",
+    "body": "ALERT payments-api p95=2980ms threshold=800ms env=prod region=eu-west-1. Started 02:14 UTC. Error rate 0.9% rising. Orders-api retry queue growing. Runbook link in wiki. Support is already seeing card payments spin for 20+ seconds at checkout since last night's release."
+  },
+  {
+    "id": "MSG-2", "incident_id": "INC-1043", "channel": "email", "from": "d.mehta@example.com", "received_at": "2026-11-02T07:12:00Z",
+    "subject": "Can't stay logged in??",
+    "body": "Hi team, since this morning about half my staff keep getting kicked out of the portal and login errors appear every minute or so. We've reset passwords, no change. It's annoying but people can eventually get in after a few tries. Please look at it today. Thanks, Dev Mehta, +91 98200 12345"
+  },
+  {
+    "id": "MSG-3", "incident_id": "INC-1044", "channel": "alert", "from": "prometheus@alerts.larkspur.example", "received_at": "2026-11-02T08:00:00Z",
+    "subject": "[WARNING] payments-db disk at 91.4%",
+    "body": "node pgdb-01 (10.20.4.15) volume /var/lib/postgresql 91.4% used, growth 1.1%/hour, projected full in ~8 hours. WAL retained 212 GB. Replication slot analytics_slot inactive for 24h. No customer impact yet."
+  },
+  {
+    "id": "MSG-4", "incident_id": "INC-1045", "channel": "email", "from": "maya.singh@larkspur.example", "received_at": "2026-11-02T03:25:00Z",
+    "subject": "checkout-web 9.3.0 release failed",
+    "body": "Heads-up from the storefront release: the 9.3.0 canary was aborted at 25% after readiness failures. Two pods are in CrashLoopBackOff and we're down to 6 of 8 ready. Looks like the new address API host doesn't resolve. Stable 9.2.2 is still serving traffic but capacity is reduced. Can someone from platform confirm the DNS entry? I'd like to retry the release this week."
+  },
+  {
+    "id": "MSG-5", "incident_id": "INC-1046", "channel": "email", "from": "priya.nair@acme-retail.example", "received_at": "2026-11-02T07:58:00Z",
+    "subject": "UNACCEPTABLE - your checkout has been down ALL NIGHT",
+    "body": "This is the THIRD outage this year. Our entire store has been unable to take payments since 2am and we are losing thousands every hour. Nobody has told us anything. If this isn't fixed in the next hour I will be calling your CEO and our lawyers about the SLA credits. Our account is ACME-RETAIL-4471. Call me on +91 98765 43210 or priya.nair@acme-retail.example. I want a written explanation TODAY."
+  }
+]

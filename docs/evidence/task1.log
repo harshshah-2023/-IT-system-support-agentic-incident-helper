@@ -1,0 +1,107 @@
+﻿Batch of 5 with max_concurrency=2: 5.4s
+MSG-1 CustomerTicket
+{
+  "urgency": "critical",
+  "sentiment": "frustrated",
+  "summary": "Payments API latency is above the SLO, causing checkout delays.",
+  "action_items": [
+    "Investigate payments-api latency issue",
+    "Check orders-api retry queue",
+    "Review last night's release for potential causes"
+  ],
+  "severity": "SEV2",
+  "affected_service": "payments-api"
+}
+MSG-2 CustomerTicket
+{
+  "urgency": "high",
+  "sentiment": "frustrated",
+  "summary": "Staff are experiencing frequent login errors and being kicked out of the portal.",
+  "action_items": [
+    "Investigate the login errors",
+    "Check the auth-service for issues",
+    "Monitor user sessions for anomalies"
+  ],
+  "severity": "SEV2",
+  "affected_service": "auth-service"
+}
+MSG-3 CustomerTicket
+{
+  "urgency": "high",
+  "sentiment": "concerned",
+  "summary": "The payments-db disk usage is critically high at 91.4%, with projections indicating it will be full in approximately 8 hours.",
+  "action_items": [
+    "Monitor disk usage closely",
+    "Investigate options for increasing disk space",
+    "Consider cleaning up WAL files if necessary"
+  ],
+  "severity": "SEV2",
+  "affected_service": "payments-db"
+}
+MSG-4 CustomerTicket
+{
+  "urgency": "medium",
+  "sentiment": "concerned",
+  "summary": "The 9.3.0 release of checkout-web failed due to readiness failures and DNS resolution issues.",
+  "action_items": [
+    "Confirm the DNS entry for the new address API host",
+    "Investigate the CrashLoopBackOff issue with the two pods",
+    "Retry the 9.3.0 release once issues are resolved"
+  ],
+  "severity": "SEV2",
+  "affected_service": "checkout-web"
+}
+MSG-5 CustomerTicket
+{
+  "urgency": "critical",
+  "sentiment": "angry",
+  "summary": "The checkout service has been down since 2am, causing significant financial loss.",
+  "action_items": [
+    "Investigate the checkout-web outage immediately",
+    "Provide an update to the customer within the hour",
+    "Prepare a written explanation regarding the SLA credits"
+  ],
+  "severity": "SEV1",
+  "affected_service": "checkout-web"
+}
+TypedDict schema
+{
+    'summary': "Payments API performance alert in production environment (eu-west-1). P95 latency is 2980ms, exceeding 
+the threshold of 800ms. Error rate is at 0.9% and increasing. Orders API retry queue is growing. Support reports card 
+payments taking over 20 seconds at checkout since last night's release.",
+    'urgency': 'high'
+}
+dataclass schema
+{
+    'service': 'payments-api',
+    'metric': 'p95',
+    'value': '2980ms',
+    'notes': [
+        'Threshold exceeded: 800ms',
+        'Error rate rising: 0.9%',
+        'Orders-api retry queue growing',
+        'Support reports card payments spinning for 20+ seconds at checkout',
+        'Incident started at 02:14 UTC',
+        'Environment: prod',
+        'Region: eu-west-1',
+        'Runbook link available in wiki'
+    ]
+}
+.stream() with two bound tools, text prompt:
+|P|95| latency| measures| the| response| time| below| which| |95|%| of| requests| are| completed|,| indicating| the| performance| experienced| by| most| users|.||||
+29 chunks
+.stream() again, tool-call prompt (args arrive as partial chunks):
+check_service_status|{"|service|":"|payments|-api|"}|
+Manual tool-execution loop:
+  SystemMessage: You are an SRE assistant. Use tools for facts.
+  HumanMessage: What version of auth-service is running?
+  AIMessage: [{'name': 'check_service_status', 'args': {'service': 'auth-service'}, 'id': 
+'call_9Fo5CiSIITLrD0SdNeSiifYN', 
+  ToolMessage: {
+ "service": "auth-service",
+ "state": "degraded",
+ "version": "5.8.1",
+ "tier": 1,
+ "owner": "identity-team"
+  AIMessage: The currently running version of the auth-service is **5.8.1**. However, the service is in a degraded state
+wi

@@ -1,0 +1,9 @@
+﻿──────────────────────────────────────────────────────── VECTOR ────────────────────────────────────────────────────────
+Insufficient grounded context
+  similarity=0.6068 confidence=0.0 generation_called=False
+  {'latency_ms': 14.14, 'input_tokens': 0, 'output_tokens': 0, 'llm_calls': 0, 'retrieved': 0}
+────────────────────────────────────────────────────── VECTORLESS ──────────────────────────────────────────────────────
+Insufficient grounded context
+  Visited: Root
+  similarity=None confidence=0.0 generation_called=False
+  {'latency_ms': 1772.36, 'input_tokens': 1010, 'output_tokens': 76, 'llm_calls': 1, 'retrieved': 0}

@@ -1,0 +1,17 @@
+﻿Workspace: D:\IT Sysytem support\output\INC-1042-20261102T090737-e71fa8
+plan {"subtasks": [{"id": "timeline", "objective": "Construct a detailed timeline of events leading up to, during, and 
+after the outage.", "depends_on": []}, {"id": "root_cause", "objective": "Identify the root cause of the outage.", 
+"depends_on": ["timeline"]}, {"id": "prevention", "objective": "Develop
+worker_start {"id": "timeline", "name": "Timeline Investigator"}
+worker_done {"id": "timeline", "file": "timeline.md"}
+gate {"done": ["timeline"], "errors": []}
+worker_start {"id": "root_cause", "name": "Root Cause Investigator"}
+worker_done {"id": "root_cause", "file": "root_cause.md"}
+gate {"done": ["timeline", "root_cause"], "errors": []}
+worker_start {"id": "prevention", "name": "Prevention Investigator"}
+worker_done {"id": "prevention", "file": "prevention.md"}
+gate {"done": ["timeline", "root_cause", "prevention"], "errors": []}
+report {"file": "incident_report.md", "missing": []}
+─────────────────────────────────────────────────────── Outcome ────────────────────────────────────────────────────────
+status=complete replans=0 errors=[]
+report=D:\IT Sysytem support\output\INC-1042-20261102T090737-e71fa8\incident_report.md

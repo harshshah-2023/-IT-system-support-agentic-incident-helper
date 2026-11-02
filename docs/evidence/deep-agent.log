@@ -1,0 +1,3 @@
+﻿The rollback rules for the payments-api have been summarized and saved to `rollback.md`.
+
+Files: ['rollback.md']

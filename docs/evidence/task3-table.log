@@ -1,0 +1,8 @@
+﻿| Question | Method | Latency (ms) | Input tokens | Output tokens | LLM calls | Accuracy (judge) |
+|---|---|---|---|---|---|---|
+| Q1 | vector | 2609 | 1142 | 184 | 1 | 0.57 |
+| Q1 | vectorless | 16539 | 2165 | 472 | 3 | 1.00 |
+| Q2 | vector | 2088 | 1258 | 143 | 1 | 0.33 |
+| Q2 | vectorless | 28380 | 8343 | 1920 | 11 | 0.33 |
+| Q3 | vector | 2753 | 1337 | 141 | 1 | 1.00 |
+| Q3 | vectorless | 22859 | 4323 | 883 | 6 | 0.50 |

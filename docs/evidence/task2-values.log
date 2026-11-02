@@ -1,0 +1,26 @@
+﻿stream_mode='values', recursion_limit=6
+step 0: keys=['messages'] full history length=1, last=HumanMessage
+step 1: keys=['messages'] full history length=2, last=AIMessage
+step 2: keys=['messages'] full history length=3, last=ToolMessage
+step 3: keys=['messages'] full history length=4, last=AIMessage
+step 4: keys=['messages'] full history length=6, last=ToolMessage
+step 5: keys=['messages'] full history length=7, last=AIMessage
+
+Answer: The degraded upstream services for the checkout-web are:
+
+1. **payments-api**
+   - Latest Release: Version **2.14.0**
+   - Deployed on: **November 2, 2026**
+   - Change Summary: Introduces per-line-item fraud pre-check; refactors settlement batching.
+
+2. **auth-service**
+   - Latest Release: Version **5.8.1**
+   - Deployed on: **November 2, 2026**
+   - Change Summary: Rotates JWT signing library; changes session TTL handling.
+
+Both services were deployed recently, which may correlate with the degradation observed in the checkout service.
+
+Thread isolation
+Thread A asked for B's word: NONE
+Thread B asked for its own: The code word you gave me is ORCHID.
+Checkpoints stored for thread A: 10

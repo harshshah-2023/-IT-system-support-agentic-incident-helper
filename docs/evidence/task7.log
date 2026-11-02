@@ -1,0 +1,17 @@
+﻿─ simple: {'route': <Route.SIMPLE_FAQ: 'simple_faq'>, 'intent': <Intent.FAQ: 'faq'>, 'confidence': 0.302, 'method': '… ─
+{"model_used": "openai:gpt-4o-mini", "fallback_triggered": false, "cache_hit": false, "latency_ms": 1993.81, "input_tokens": 389, "output_tokens": 13, "estimated_cost_usd": 6.615e-05, "tier": "fast", "route": "simple_faq", "purpose": "quick_answer", "cache_kind": null, "attempts": [], "at": "2026-11-02T09:19:04.095+00:00"}
+The login service (auth-service) is in a degraded state.
+─ complex: {'route': <Route.COMPLEX_REASONING: 'complex_reasoning'>, 'intent': <Intent.REASONING: 'reasoning'>, 'conf… ─
+{"model_used": "openai:gpt-4o", "fallback_triggered": false, "cache_hit": false, "latency_ms": 1590.72, "input_tokens": 396, "output_tokens": 86, "estimated_cost_usd": 0.00185, "tier": "reasoning", "route": "complex_reasoning", "purpose": "quick_answer", "cache_kind": null, "attempts": [], "at": "2026-11-02T09:19:05.938+00:00"}
+The snapshot indicates that the "payments-api" and "payments-db" services are in a degraded state. Although all 
+instances of "payments-api" are healthy, the degraded state suggests there might be issues affecting performance or 
+functionality. The "payments-db" is also degraded, which could impact th
+────────────────────────── Same prompt again: expect cache_hit true and latency at most 50 ms ──────────────────────────
+{"model_used": "cache", "fallback_triggered": false, "cache_hit": true, "latency_ms": 0.113, "input_tokens": 0, "output_tokens": 0, "estimated_cost_usd": 0.0, "tier": "", "route": "", "purpose": "quick_answer", "cache_kind": "exact", "attempts": [], "at": "2026-11-02T09:19:06.210+00:00"}
+cache_hit=True latency_ms=0.113
+────────────────────────────────────────────── Paraphrase: semantic tier ───────────────────────────────────────────────
+{"model_used": "cache", "fallback_triggered": false, "cache_hit": true, "latency_ms": 29.883, "input_tokens": 0, "output_tokens": 0, "estimated_cost_usd": 0.0, "tier": "", "route": "", "purpose": "quick_answer", "cache_kind": "semantic", "attempts": [], "at": "2026-11-02T09:19:06.250+00:00"}
+cache_hit=True kind=semantic latency_ms=29.883
+───────────────────────────────────────────── Different service: must miss ─────────────────────────────────────────────
+{"model_used": "openai:gpt-4o-mini", "fallback_triggered": false, "cache_hit": false, "latency_ms": 1124.61, "input_tokens": 389, "output_tokens": 9, "estimated_cost_usd": 6.375e-05, "tier": "fast", "route": "simple_faq", "purpose": "quick_answer", "cache_kind": null, "attempts": [], "at": "2026-11-02T09:19:07.419+00:00"}
+cache_hit=False

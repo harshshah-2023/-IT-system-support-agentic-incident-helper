@@ -1,0 +1,31 @@
+﻿──────────────────────────────────────────────────────── VECTOR ────────────────────────────────────────────────────────
+To switch to the backup database, follow these steps:
+1. Announce the window in the operations channel and on the status page.
+2. Confirm cluster health with the command: `patronictl list payments-db`.
+3. Pause batch jobs that write to the database.
+4. Run the switchover with the command: `patronictl switchover payments-db --leader pgdb-01 --candidate pgdb-02` and 
+answer the prompts with the intended new leader.
+5. Watch the cluster listing until the new leader shows as running and the old leader rejoins as a replica.
+6. Confirm that the pooler has reconnected and that applications are healthy.
+7. Resume batch jobs.
+  p.20 5.4.3 Procedure similarity=0.6588
+  similarity=0.6667 confidence=0.6667 generation_called=True
+  {'latency_ms': 3794.04, 'input_tokens': 1435, 'output_tokens': 186, 'llm_calls': 1, 'retrieved': 8}
+────────────────────────────────────────────────────── VECTORLESS ──────────────────────────────────────────────────────
+To switch to the backup database, follow these steps:
+1. Confirm that pgdb-01 is truly unavailable from two independent vantage points.
+2. Confirm that replication lag on pgdb-02 is under 5 seconds. If it is not, inform the Incident Commander about the 
+likely data loss and wait for their decision.
+3. Obtain approval from the DBA on-call and the Incident Commander.
+4. Announce the failover in the incident channel.
+5. Run the failover command to switch to standby pgdb-02:
+   ```
+   patronictl failover payments-db --candidate pgdb-02
+   ```
+   The expected output will ask for confirmation and then report that pgdb-02 was promoted.
+6. Watch the cluster listing until pgdb-02 is the leader and running.
+  p.21 5.5.3 Procedure similarity=None
+  Visited: Root -> 5. Database operations -> 5.4 Planned switchover -> 5.4.3 Procedure
+  Visited: Root -> 5. Database operations -> 5.5 Unplanned failover -> 5.5.3 Procedure
+  similarity=None confidence=1.0 generation_called=True
+  {'latency_ms': 7933.24, 'input_tokens': 3235, 'output_tokens': 531, 'llm_calls': 5, 'retrieved': 2}
